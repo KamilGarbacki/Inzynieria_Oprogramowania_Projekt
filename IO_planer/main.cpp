@@ -102,6 +102,7 @@ public:
         return -1;
     }
 
+
     void write_list()
     {
         for (int i = 0; i < size; ++i) {
@@ -329,6 +330,11 @@ public:
 
     friend class Admin_acc;
 
+    void add_admin(Account temp)
+    {
+        admins.add_new(temp);
+    }
+
     int registration(string login, string password)
     {
         if(accounts.get_index_login(login) != -1)
@@ -368,6 +374,7 @@ public:
 
 class Admin_acc : public Account
 {
+public:
     Admin_acc(string log, string pass)
     {
         login = log;
@@ -377,7 +384,6 @@ class Admin_acc : public Account
 
     int add_new_admin(string login, string password)
     {
-        //Security::admins.add_new(Admin_acc());
         if(Security::admins.get_index_login(login) != -1)
         {
             cout << "Ten login jest zajety, prosze wybrac inny" << endl;
@@ -390,11 +396,34 @@ class Admin_acc : public Account
             return 0;
         }
     }
+
+    void ban_user()
+    {
+        if (Security::admins.is_empty())
+            cout << "W bazie danych nie ma zarejestrowanych uzytkownikow" << endl;
+        else
+        {
+            cout << "Podaj login konta ktore chcesz usunac" << endl;
+            string p_name;
+            cin >> p_name;
+
+            if (Security::admins.get_index_login(p_name) == -1)
+                cout << "Niema takiego konta" << endl;
+            else {
+                projects.remove(Security::admins.get_index_login(p_name));
+                cout << "Akcja zakonczona sukcesem!" << endl;
+            }
+
+        }
+    }
 };
 
 Account login_proccess(int input)
 {
     Security security;
+    Admin_acc temp ("admin1", "login1");
+    security.add_admin(temp);
+
 
     string login;
     string password;
@@ -453,7 +482,6 @@ void app()
 
     cin >> input;
     user = login_proccess(input);
-
 
     while(true)
     {
