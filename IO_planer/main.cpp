@@ -116,7 +116,7 @@ public:
             Node<T>* temp = get_node(i);
             cout << i << "." << temp->data.name << endl;
             cout << "-waznosc: " << temp->data.importance << "/10" << endl;
-            cout << "-opis: " << temp->data.
+            cout << "-opis: " << temp->data.description;
         }
     }
 
@@ -361,7 +361,7 @@ public:
                 return accounts.get_node(user_acc_index)->data;
         }
         else
-            return admins.get_node(user_acc_index)->data;
+            return admins.get_node(admin_acc_index)->data;
 
     }
 };
