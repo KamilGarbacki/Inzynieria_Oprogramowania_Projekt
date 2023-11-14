@@ -102,6 +102,24 @@ public:
         return -1;
     }
 
+    void write_list()
+    {
+        for (int i = 0; i < size; ++i) {
+            Node<T>* temp = get_node(i);
+            cout << i << "." << temp->data.name << endl;
+        }
+    }
+
+    void write_tasks()
+    {
+        for (int i = 0; i < size; ++i) {
+            Node<T>* temp = get_node(i);
+            cout << i << "." << temp->data.name << endl;
+            cout << "-waznosc: " << temp->data.importance << "/10" << endl;
+            cout << "-opis: " << temp->data.
+        }
+    }
+
     T remove(int index)
     {
 
@@ -183,6 +201,7 @@ public:
 
 class Account
 {
+protected:
     string login;
     string password;
     List<Project> projects;
@@ -302,10 +321,13 @@ public:
 };
 
 class Security{
-    List<Account> accounts;
+    static List<Account> accounts;
+    static List<Account> admins;
     Account def_acc = Account("login1", "password1");
 public:
     Security(){accounts.add_new(def_acc);}
+
+    friend class Admin_acc;
 
     int registration(string login, string password)
     {
@@ -324,17 +346,49 @@ public:
 
     Account log_in(string login, string password)
     {
-        int acc_index = accounts.get_index_login(login);
+        int admin_acc_index = admins.get_index_login(login);
 
-        if(acc_index == -1 || password != accounts.get_node(acc_index)->data.get_password())
+        if(admin_acc_index == -1 || password != accounts.get_node(admin_acc_index)->data.get_password())
         {
-            cout << "Niepoprawny login lub haslo" << endl;
-            throw (-1);
+            int user_acc_index = accounts.get_index_login(login);
+
+            if(user_acc_index == -1 || password != accounts.get_node(user_acc_index)->data.get_password())
+            {
+                cout << "Niepoprawny login lub haslo" << endl;
+                throw (-1);
+            }
+            else
+                return accounts.get_node(user_acc_index)->data;
         }
         else
-            return accounts.get_node(acc_index)->data;
+            return admins.get_node(user_acc_index)->data;
 
+    }
+};
 
+class Admin_acc : public Account
+{
+    Admin_acc(string log, string pass)
+    {
+        login = log;
+        password = pass;
+        projects.add_new(Project("def_project"));
+    }
+
+    int add_new_admin(string login, string password)
+    {
+        //Security::admins.add_new(Admin_acc());
+        if(Security::admins.get_index_login(login) != -1)
+        {
+            cout << "Ten login jest zajety, prosze wybrac inny" << endl;
+            return 1;
+        }
+        else
+        {
+            Admin_acc new_acc(login, password);
+            Security::admins.add_new(new_acc);
+            return 0;
+        }
     }
 };
 
@@ -400,6 +454,7 @@ void app()
     cin >> input;
     user = login_proccess(input);
 
+
     while(true)
     {
         cout << "----------------------------------Manual----------------------------------" << endl;
@@ -442,28 +497,8 @@ void app()
 int main()
 {
     app();
-    /*Account acc("login", "haslo");
-    bool run_program = true;
-    int input;
 
-    while(run_program)
-    {
-
-
-        cin >> input;
-        if(input == 1)
-            acc.add_task();
-        else if(input == 2)
-            acc.create_project();
-        else if(input == 3)
-            acc.change_data();
-        else if(input == 4)
-            run_program = false;
-        else
-            cout << "Error" << endl;
-    }
-
-    return 0;*/
+    return 0;
 }
 
 
