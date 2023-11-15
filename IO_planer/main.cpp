@@ -179,7 +179,7 @@ public:
 
     string get_name() { return name; }
 
-    void create_task()
+    void create_task() //KG
     {
         int importance;
         string name;
@@ -216,7 +216,7 @@ public:
     string get_login() {return login;}
     string get_password() {return password;}
 
-    void change_data()
+    void change_data() //KG
     {
         string temp_l;
         string temp_p;
@@ -244,7 +244,7 @@ public:
             cout << "Niepoprawne dane" << endl;
     }
 
-    void add_task()
+    void add_task() //KG
     {
         if (projects.is_empty())
             cout << "Nie posiadasz zadnych projektow, najpierw stworz projekt" << endl;
