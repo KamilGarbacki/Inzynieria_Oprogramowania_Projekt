@@ -514,7 +514,7 @@ void app()
                 user.change_data();
                 break;
             case 6:
-                //system("cls");
+                system("cls");
                 break;
             default:
                 exit(0);
