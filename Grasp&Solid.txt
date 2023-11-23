@@ -1,0 +1,28 @@
+DRY - potrzeba wprowadzenia, w kodzie znajdują się różne funkcje o tej samej funkcjonalności
+KISS - Diagram dla nas jest zrozumiały
+Minimise Coupling - Nie wprowadzone, wiele klas jest zależnych od siebie
+ADP - spełnia, w kodzie nie występują zapętlenia
+SDP - spełnione, klasy trudne do zmiany nie wpływają na klasy zmienne
+SAP - nie spełnia, projekt nie zawiera klas abstrakcyjnych
+
+SOLID:
+
+Single responsibility - wprowadzone częściowo. Niektóre klasy posiadają różne metody o tej samej funkcjonalności
+Open/closed - spełnia, wprowadzenie nowej funkcjonalności nie wymaga modyfikacji już istniejących metod
+Liskov - nie spełnia
+Interface - projekt nie posiada klas abstrakcyjnych
+Dependency inversion - nie spełnione, klasy dziedziczą po klasach nie abstrakcyjnych
+
+Grasp:
+Information expert - spełnione
+Creator - spełnione
+Low coupling - spełnione(?)
+High cohesion - spełnione(?)
+Polimorfizm - spełnia
+Pure Fabrication - nie zastała potrzeba implementacji
+Indirection - nie spełniamy
+Protected Variations - spełnione
+
+
+
+
