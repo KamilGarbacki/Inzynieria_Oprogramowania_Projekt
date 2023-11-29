@@ -1,23 +1,23 @@
-DRY - potrzeba wprowadzenia, w kodzie znajdują się różne funkcje o tej samej funkcjonalności
+DRY - na diagramie występuje powtórzenie tylko jednej funkcji które jest koieczne dla prawidłowego działania systemu.
 KISS - Diagram dla nas jest zrozumiały
-Minimise Coupling - Nie wprowadzone, wiele klas jest zależnych od siebie
+Minimise Coupling - Zależności między klasami są sprowadzone do minimum
 ADP - spełnia, w kodzie nie występują zapętlenia
 SDP - spełnione, klasy trudne do zmiany nie wpływają na klasy zmienne
 SAP - nie spełnia, projekt nie zawiera klas abstrakcyjnych
 
 SOLID:
 
-Single responsibility - wprowadzone częściowo. Niektóre klasy posiadają różne metody o tej samej funkcjonalności
+Single responsibility
 Open/closed - spełnia, wprowadzenie nowej funkcjonalności nie wymaga modyfikacji już istniejących metod
-Liskov - nie spełnia
+Liskov - spełnione, miejsca wykorzystujące klasę user mogą również wykorzystać klasę admin
 Interface - projekt nie posiada klas abstrakcyjnych
-Dependency inversion - nie spełnione, klasy dziedziczą po klasach nie abstrakcyjnych
+Dependency inversion - projekt nie zawiera klas abstrakcyjnych
 
 Grasp:
 Information expert - spełnione
 Creator - spełnione
-Low coupling - spełnione(?)
-High cohesion - spełnione(?)
+Low coupling - spełnione
+High cohesion - spełnione
 Polimorfizm - spełnia
 Pure Fabrication - nie zastała potrzeba implementacji
 Indirection - nie spełniamy
