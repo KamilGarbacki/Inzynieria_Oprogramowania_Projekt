@@ -289,11 +289,17 @@ public:
         }
     }
 
-    void create_project()
+    string input_project_data()
     {
         string name;
         cout << "Podaj nazwe nowego projektu" << endl;
         cin >> name;
+        return name;
+    }
+
+    void create_project()
+    {
+        string name = input_project_data();
 
         Project new_project = Project(name);
         projects.add_new(new_project);
