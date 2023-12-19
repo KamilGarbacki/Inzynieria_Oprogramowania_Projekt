@@ -328,7 +328,7 @@ public:
 };
 
 class Security{
-    static List<Account> accounts;
+    /*static List<Account> accounts;
     static List<Account> admins;
     Account def_acc = Account("login1", "password1");
 public:
@@ -375,7 +375,7 @@ public:
         else
             return admins.get_node(admin_acc_index)->data;
 
-    }
+    }*/
 };
 
 class Admin_acc : public Account
@@ -390,7 +390,7 @@ public:
 
     int add_new_admin(string login, string password)
     {
-        if(Security::admins.get_index_login(login) != -1)
+        /*if(Security::admins.get_index_login(login) != -1)
         {
             cout << "Ten login jest zajety, prosze wybrac inny" << endl;
             return 1;
@@ -400,12 +400,13 @@ public:
             Admin_acc new_acc(login, password);
             Security::admins.add_new(new_acc);
             return 0;
-        }
+        }*/
+        return 0;
     }
 
     void ban_user()
     {
-        if (Security::admins.is_empty())
+        /*if (Security::admins.is_empty())
             cout << "W bazie danych nie ma zarejestrowanych uzytkownikow" << endl;
         else
         {
@@ -420,7 +421,7 @@ public:
                 cout << "Akcja zakonczona sukcesem!" << endl;
             }
 
-        }
+        }*/
     }
 };
 
@@ -428,7 +429,7 @@ Account login_proccess(int input)
 {
     Security security;
     Admin_acc temp ("admin1", "login1");
-    security.add_admin(temp);
+    //security.add_admin(temp);
 
 
     string login;
@@ -449,7 +450,7 @@ Account login_proccess(int input)
             cin >> password;
 
             try{
-                user = security.log_in(login, password);
+                //user = security.log_in(login, password);
                 log_flag = true;
             }
             catch (int error_code){}
@@ -463,11 +464,11 @@ Account login_proccess(int input)
             cin >> login;
             cout << "Podaj haslo:";
             cin >> password;
-            if(security.registration(login, password) == 0)
-            {
-                reg_flag = true;
-                security.log_in(login, password);
-            }
+//            if(security.registration(login, password) == 0)
+//            {
+//                reg_flag = true;
+//                security.log_in(login, password);
+//            }
         }
     }
     else
