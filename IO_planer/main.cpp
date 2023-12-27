@@ -188,7 +188,12 @@ public:
         cin >> importance;
         cin >> name;
         cin >> description;
-        Task new_task(importance, name, description);
+        Task new_task(importanceS, name, description);
+        add_to_project(new_task);
+    }
+
+    void add_to_project(Task new_task)
+    {
         tasks.add_new(new_task);
     }
 
@@ -244,24 +249,32 @@ public:
             cout << "Niepoprawne dane" << endl;
     }
 
-    void add_task() //KG
+    Project* check_for_project()
     {
         if (projects.is_empty())
             cout << "Nie posiadasz zadnych projektow, najpierw stworz projekt" << endl;
-        else
-        {
+        else {
             cout << "Podaj nazwe projektu do ktorego chcesz dodac zadanie" << endl;
             string t_name;
             cin >> t_name;
 
             if (projects.get_index_name(t_name) == -1)
                 cout << "Niema takiego projektu" << endl;
-            else
-            {
-                Project temp = projects.get_node((projects.get_index_name(t_name)))->data;
-                temp.create_task();
-                cout << "Akcja zakonczona sukcesem!" << endl;
+            else {
+                Project* temp = &projects.get_node((projects.get_index_name(t_name)))->data;
+                return temp;
             }
+        }
+        return nullptr;
+    }
+
+
+    void add_task() //KG
+    {
+        Project* temp = check_for_project();
+        if(temp != nullptr)
+        {
+            temp->create_task();
         }
     }
 
