@@ -1,0 +1,10 @@
+1.Zredagowanie instrukcji warunkowych używających zmiennych bool'owych.
+W kodzie można znaleść instrukcje warunkowe w postaci (np w pliku gl_shapes.cpp):
+if(some_bool_variable == true) lub if(some_bool_variable == false)
+Należy instrukcje te należy zamienić na postać
+if(some_bool_variable)
+
+2. Uporządkować kod pod względem spacji i tabulacji
+
+3. Zamiana printf na cout
+
