@@ -1,0 +1,13 @@
+Wzorcem wartym implementacji jest m.in. wzorzec odwiedzający.
+Możemy wykorzystać korzyści z niego płynące podczas tworzenia projektów, do których dostęp będzie miało wielu użytkowników.
+Pozwoli na bezproblemowe dodawanie zadań dla innych użytkowników.
+
+Wzorzec pamiątka może się okazać bardzo przydatny jeżeli zajdzie potrzeba "zapamiętania" stanu obiektów zbiorczych takich jak
+projekt w którym przechowujemy zadania, który jest dostępny tylko dla określonej grupy użytkowników.
+
+Wzorzec prototyp może służyć jako backup podczas modyfikacji zadań przez uŻytkownika.
+
+Wzorzec fasada jest wzorcem, który zdecydowanie warto by było wprowadzić do naszego kodu.
+Umożliwiłby połączenie kilkunastu rozproszonych metod i danych w jeden interfejs. Uprościł by także proces szukania interesującej funkcjonalności
+dla odpowieniego poziomu użytkownia ( zwykły użytkownik / admin)
+
