@@ -46,5 +46,18 @@ namespace UnitTest1
 			Assert::AreEqual(expected, result);			
 		}
 
+		TEST_METHOD(LOGIN_MG) {
+			int expected = 0;
+			int result;
+			Security app_system;
+			Account acc = app_system.log_in("def_log", "def_pass");
+			if (acc.get_log() == "Error" && acc.get_pass() == "Error")
+				result = 1;
+			else
+				result = 0;
+
+			Assert::AreEqual(expected, result);
+		}
+
 	};
 }
