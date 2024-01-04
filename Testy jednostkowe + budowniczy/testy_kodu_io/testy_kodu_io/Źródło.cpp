@@ -53,6 +53,8 @@ class Project {
     string name;
     vector<Task> tasks;
 public:
+
+
     bool operator==(Project& p) {
         return(name == p.name);
     }
@@ -91,6 +93,27 @@ public:
             }
         }
         return 0;
+    }
+
+    void set_name(string n) { name = n; }
+    void set_task(Task t) { tasks.push_back(t); }
+};
+
+class Project_Buiilder {
+    Project project;
+public:
+    virtual void build_name() = 0;
+    virtual void build_tasks() = 0;
+};
+
+class Simple_project_builder : Project_Buiilder {
+    Project project;
+public:
+    void build_name() override {
+        project.set_name("Simple_Project");
+    }
+    void build_tasks() override {
+        project.set_task(Task(2, "test_task", "test_description"));
     }
 };
 
@@ -240,6 +263,32 @@ public:
         else {
             p_temp->display_tasks();
         }
+    }
+
+    void set_log(string l) { log = l; }
+    void set_pass(string p) { pass = p; }
+    void set_Projects(Project p) { projects.push_back(p); }
+};
+
+class Account_Builder {
+    Account account;
+public:
+    virtual void build_log();
+    virtual void build_pass();
+    virtual void build_projects();
+};
+
+class User_account_Builder : Account_Builder {
+    Account account;
+public:
+    void build_log() override {
+        account.set_log("User");
+    }
+    void build_pass() override {
+        account.set_pass("User_password");
+    }
+    void build_projects()override {
+        account.set_Projects(Project("Test_Project"));
     }
 };
 
